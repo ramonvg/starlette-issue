@@ -5,6 +5,8 @@ I've notice this **only happens** when Starlette is initialized with more than o
 
 This started happening with version `0.15.0`. It doesn't happen in version `0.14.2`. I'm wondering if it could be related to the major change related to `AnyIO`.
 
+I've been using CPython 3.9.5 but I've also seen the issue in Python 3.10.
+
 # How to reproduce the issue
 ## Setup dependencies
 Just install the requirements.txt. 
