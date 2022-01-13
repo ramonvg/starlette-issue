@@ -1,16 +1,14 @@
-from requests.exceptions import Timeout
-from starlette.responses import JSONResponse
-from starlette.middleware.base import BaseHTTPMiddleware
-from asyncio import sleep
+from anyio import sleep
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.responses import JSONResponse
 from starlette.responses import JSONResponse
 from starlette.routing import Route
-import requests
-from starlette.middleware import Middleware
-
+import httpx
 
 async def get_timeout(request):
-    await requests.get("http://localhost:8000/sleep", timeout=1)
+    await httpx.get("http://localhost:8000/sleep", timeout=1)
 
 
 async def get_sleep(request):
@@ -34,7 +32,7 @@ async def handle_timeout(request, exc):
 
 
 exception_handlers = {
-    Timeout: handle_timeout,
+    httpx.ReadTimeout: handle_timeout,
 }
 
 
