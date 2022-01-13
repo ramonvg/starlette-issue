@@ -7,6 +7,7 @@ This started happening with version `0.15.0`. It doesn't happen in version `0.14
 
 I've been using CPython 3.9.5 but I've also seen the issue in Python 3.10.
 
+I also think that the issue might be related to `uvicorn`. I've been able to reproduce it with `gunicorn -k uvicorn.workers.UvicornWorker app:app` **but unable to reproduce it with hypecorn**: `hypercorn app:app`.
 # How to reproduce the issue
 ## Setup dependencies
 Just install the requirements.txt. 
